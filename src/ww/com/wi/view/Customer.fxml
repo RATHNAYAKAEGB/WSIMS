@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="988.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ww.com.wi.controller.CustomerController">
+   <children>
+      <JFXTextField fx:id="txtCustomerId" editable="false" labelFloat="true" layoutX="33.0" layoutY="97.0" prefHeight="31.0" prefWidth="375.0" promptText="Customer ID" />
+      <JFXTextField fx:id="txtCustomerName" labelFloat="true" layoutX="33.0" layoutY="144.0" prefHeight="31.0" prefWidth="375.0" promptText="Customer Name (Initial)" />
+      <JFXTextField fx:id="txtNic" layoutX="33.0" layoutY="196.0" prefHeight="31.0" prefWidth="375.0" promptText="NIC" />
+      <JFXTextField fx:id="txtFullName" labelFloat="true" layoutX="28.0" layoutY="343.0" prefHeight="31.0" prefWidth="655.0" promptText="Full Name" />
+      <JFXTextField fx:id="txtMobile" labelFloat="true" layoutX="30.0" layoutY="246.0" prefHeight="31.0" prefWidth="375.0" promptText="Phone" />
+      <JFXDatePicker fx:id="txtRegDate" layoutX="33.0" layoutY="295.0" prefHeight="31.0" prefWidth="375.0" promptText="Register Date" />
+      <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="28.0" layoutY="392.0" prefHeight="31.0" prefWidth="655.0" promptText="Address" />
+      <JFXComboBox fx:id="cmbCusGroupId" layoutX="25.0" layoutY="440.0" onAction="#cmbCusGroupId_OnAction" prefHeight="31.0" prefWidth="273.0" promptText="Customer Group ID" />
+      <JFXComboBox fx:id="cmbSubCommity" layoutX="25.0" layoutY="495.0" onAction="#cmbSubCommity_OnAction" prefHeight="31.0" prefWidth="273.0" promptText="Customer Sub Commity ID" />
+      <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="19.0" layoutY="539.0" prefHeight="31.0" prefWidth="655.0" promptText="Description" />
+      <JFXButton fx:id="btnSave" layoutX="202.0" layoutY="602.0" onAction="#btnSave_OnAction" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: green;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Arial Narrow" size="16.0" />
+         </font>
+      </JFXButton>
+      <Line endX="100.0" layoutX="554.0" layoutY="82.0" startX="-100.0" />
+      <Line endX="-107.5" endY="211.0" layoutX="564.0" layoutY="94.0" startX="-108.0" startY="-9.5" />
+      <Line endX="-108.0" endY="211.0" layoutX="760.0" layoutY="94.0" startX="-108.0" startY="-9.5" />
+      <Line endX="-162.0" endY="183.5" layoutX="619.0" layoutY="121.0" startX="32.5" startY="183.5" />
+      <JFXButton fx:id="btnBrows" layoutX="522.0" layoutY="315.0" onAction="#btnBrows_OnAction" prefHeight="28.0" prefWidth="67.0" style="-fx-background-color: brown;" text="Brows" textFill="WHITE">
+         <font>
+            <Font name="Agency FB Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" layoutX="-2.0" layoutY="-2.0" prefHeight="75.0" prefWidth="703.0" style="-fx-background-color: #000080;" text="Customers" textFill="WHITE">
+         <font>
+            <Font name="Agency FB Bold" size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnBack" layoutX="18.0" layoutY="21.0" mnemonicParsing="false" onAction="#btnBack_OnAction" prefHeight="26.0" prefWidth="61.0" text="Back">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <JFXTextField fx:id="txtCustomerGroupName" editable="false" labelFloat="true" layoutX="321.0" layoutY="440.0" prefHeight="31.0" prefWidth="359.0" promptText="Customer Group Name" />
+      <JFXTextField fx:id="txtSubComityName" editable="false" labelFloat="true" layoutX="321.0" layoutY="495.0" prefHeight="31.0" prefWidth="359.0" promptText="Customer Sub Commity Name" />
+      <JFXButton fx:id="btnUpdate" layoutX="298.0" layoutY="602.0" onAction="#btnUpdate_OnAction" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: #808000;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="Arial Narrow" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btnDelete" layoutX="389.0" layoutY="602.0" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: #008080;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="Arial Narrow" size="16.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="tblCustomer" layoutX="6.0" layoutY="696.0" prefHeight="278.0" prefWidth="684.0">
+        <columns>
+          <TableColumn fx:id="Cu" prefWidth="63.0" text="cus Id" />
+          <TableColumn prefWidth="55.0" text="Name" />
+            <TableColumn prefWidth="73.0" text="Nic" />
+            <TableColumn prefWidth="75.0" text="Phone" />
+            <TableColumn prefWidth="68.0" text="Reg Date" />
+            <TableColumn prefWidth="73.0" text="full Name" />
+            <TableColumn text="Address" />
+            <TableColumn prefWidth="78.0" text="CG No" />
+            <TableColumn prefWidth="63.0" text="CSC NO" />
+            <TableColumn prefWidth="63.0" text="Description" />
+        </columns>
+      </TableView>
+      <JFXTextField fx:id="txtSeachId" labelFloat="true" layoutX="7.0" layoutY="655.0" onAction="#txtSeachId_OnAction" prefHeight="31.0" prefWidth="217.0" promptText="Search Id" />
+      <Label fx:id="lblOpenBalance" layoutX="278.0" layoutY="666.0" prefHeight="21.0" prefWidth="403.0" style="-fx-background-color: green;" text="Openning Balance of The month" textFill="WHITE">
+         <font>
+            <Font name="Algerian" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="img_pp" fitHeight="222.0" fitWidth="200.0" layoutX="454.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
