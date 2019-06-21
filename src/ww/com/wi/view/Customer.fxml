@@ -17,13 +17,13 @@
    <children>
       <JFXTextField fx:id="txtCustomerId" editable="false" labelFloat="true" layoutX="33.0" layoutY="97.0" prefHeight="31.0" prefWidth="375.0" promptText="Customer ID" />
       <JFXTextField fx:id="txtCustomerName" labelFloat="true" layoutX="33.0" layoutY="144.0" prefHeight="31.0" prefWidth="375.0" promptText="Customer Name (Initial)" />
-      <JFXTextField fx:id="txtNic" layoutX="33.0" layoutY="196.0" prefHeight="31.0" prefWidth="375.0" promptText="NIC" />
+      <JFXTextField fx:id="txtNic" labelFloat="true" layoutX="33.0" layoutY="196.0" prefHeight="31.0" prefWidth="375.0" promptText="NIC" />
       <JFXTextField fx:id="txtFullName" labelFloat="true" layoutX="28.0" layoutY="343.0" prefHeight="31.0" prefWidth="655.0" promptText="Full Name" />
       <JFXTextField fx:id="txtMobile" labelFloat="true" layoutX="30.0" layoutY="246.0" prefHeight="31.0" prefWidth="375.0" promptText="Phone" />
       <JFXDatePicker fx:id="txtRegDate" layoutX="33.0" layoutY="295.0" prefHeight="31.0" prefWidth="375.0" promptText="Register Date" />
       <JFXTextField fx:id="txtAddress" labelFloat="true" layoutX="28.0" layoutY="392.0" prefHeight="31.0" prefWidth="655.0" promptText="Address" />
-      <JFXComboBox fx:id="cmbCusGroupId" layoutX="25.0" layoutY="440.0" onAction="#cmbCusGroupId_OnAction" prefHeight="31.0" prefWidth="273.0" promptText="Customer Group ID" />
-      <JFXComboBox fx:id="cmbSubCommity" layoutX="25.0" layoutY="495.0" onAction="#cmbSubCommity_OnAction" prefHeight="31.0" prefWidth="273.0" promptText="Customer Sub Commity ID" />
+      <JFXComboBox fx:id="cmbCusGroupId" labelFloat="true" layoutX="25.0" layoutY="440.0" onAction="#cmbCusGroupId_OnAction" prefHeight="31.0" prefWidth="273.0" promptText="Customer Group ID" />
+      <JFXComboBox fx:id="cmbSubCommity" labelFloat="true" layoutX="25.0" layoutY="495.0" onAction="#cmbSubCommity_OnAction" prefHeight="31.0" prefWidth="273.0" promptText="Customer Sub Commity ID" />
       <JFXTextField fx:id="txtDescription" labelFloat="true" layoutX="19.0" layoutY="539.0" prefHeight="31.0" prefWidth="655.0" promptText="Description" />
       <JFXButton fx:id="btnSave" layoutX="202.0" layoutY="602.0" onAction="#btnSave_OnAction" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: green;" text="Save" textFill="WHITE">
          <font>
@@ -75,7 +75,7 @@
             <TableColumn prefWidth="63.0" text="Description" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="txtSeachId" labelFloat="true" layoutX="7.0" layoutY="655.0" onAction="#txtSeachId_OnAction" prefHeight="31.0" prefWidth="217.0" promptText="Search Id" />
+      <JFXTextField fx:id="txtSeachId" labelFloat="true" layoutX="7.0" layoutY="655.0" onAction="#txtSeachId_OnAction" onKeyPressed="#txtSearch_OnKeyPressed" prefHeight="31.0" prefWidth="217.0" promptText="Search Id" />
       <Label fx:id="lblOpenBalance" layoutX="278.0" layoutY="666.0" prefHeight="21.0" prefWidth="403.0" style="-fx-background-color: green;" text="Openning Balance of The month" textFill="WHITE">
          <font>
             <Font name="Algerian" size="14.0" />

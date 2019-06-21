@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
@@ -26,6 +27,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.slf4j.Logger;
 import ww.com.wi.business.ManageCustomerGroupBo;
 import ww.com.wi.business.ManageCustomersBO;
 import ww.com.wi.business.ManageSubCommityBo;
@@ -98,15 +100,22 @@ public class CustomerController<T> {
     private String img_url = " ";
     private List<Customer> allCustomers= new ArrayList<>();
 
+     Logger() {
+
+    }
+
+
     public void initialize() {
+
         setCustomerGroupIds();
         setCmbSubCommity();
+        loadAllCustomers();
         setCustomerId();
 
         btnSave.setDisable(false);
         btnDelete.setDisable(true);
         btnUpdate.setDisable(true);
-        loadAllCustomers();
+
 
         tblCustomer.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("customerId"));
         tblCustomer.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("shortName"));
@@ -142,7 +151,10 @@ public class CustomerController<T> {
                 cmbSubCommity.setValue(c2.getScId().getSubCId());
                 txtFullName.setText(c2.getFullName());
                 txtNic.setText(c2.getNic());
+                txtCustomerId.setText(c2.getCustomerId());
                 img_pp.setImage(new Image(new ByteArrayInputStream(c2.getProfilePicture())));//Byte Array to Image View
+                lblOpenBalance.setText("Openning Balance of the Month : "+c2.getOpenBlance());
+
             }
         });
 
@@ -186,10 +198,30 @@ public class CustomerController<T> {
 
     @FXML
     private void txtSeachId_OnAction(ActionEvent actionEvent) {
+
+
+
+    }
+
+    @FXML
+    private void txtSearch_OnKeyPressed(KeyEvent keyEvent) {
+        findByCustomerId(txtSeachId.getText().toUpperCase());
     }
 
     @FXML
     private void btnDeleteOnAction(ActionEvent actionEvent) {
+
+        if(btnSave.isDisable()){
+            try {
+                manageCustomersBO.deleteCustomerGroup(txtCustomerId.getText().trim());
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer Deleted !", ButtonType.OK).showAndWait();
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "Not Deleted  !", ButtonType.OK).showAndWait();
+            }
+        }
+
+        reset();
+
     }
 
     @FXML
@@ -272,7 +304,8 @@ public class CustomerController<T> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("image---Path" + img_url);
+
+
         SubCommity subCommity = findSubCommity(cmbSubCommity.getValue().toString().trim());
         CustomerGroup customerGroup = findCustomerGroup(cmbCusGroupId.getValue().toString().trim());
         String address = txtAddress.getText().trim();
@@ -292,6 +325,8 @@ public class CustomerController<T> {
             new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK).showAndWait();
             e.printStackTrace();
         }
+
+        reset();
 
     }
 
@@ -381,6 +416,8 @@ public class CustomerController<T> {
             new Alert(Alert.AlertType.ERROR, "Error", ButtonType.OK).showAndWait();
             e.printStackTrace();
         }
+
+        reset();
 
     }
 
@@ -504,6 +541,46 @@ public class CustomerController<T> {
         }
         return null;
     }
+
+
+    private void findByCustomerId(String id){
+
+        ArrayList<CustomerDTO> findList = new ArrayList<>();
+        ObservableList<CustomerDTO> items = tblCustomer.getItems();
+        for (CustomerDTO d:items) {
+            String idh = d.getCustomerId().substring(0, id.length());
+            if(id.equals(idh)){
+                findList.add(d);
+            }
+        }
+
+        tblCustomer.setItems(FXCollections.observableArrayList(findList));
+
+    }
+
+
+    private void reset(){
+        txtCustomerId.clear();
+        txtAddress.clear();
+        txtFullName.clear();
+        txtDescription.clear();
+        txtCustomerGroupName.clear();
+        txtNic.clear();
+        txtRegDate.setValue(null);
+        txtSeachId.clear();
+        txtSubComityName.clear();
+        cmbSubCommity.setValue("");
+        cmbCusGroupId.setValue("");
+        txtMobile.clear();
+        txtCustomerName.clear();
+        loadAllCustomers();
+        setCustomerId();
+        btnSave.setDisable(false);
+        btnDelete.setDisable(true);
+        btnUpdate.setDisable(true);
+    }
+
+
 
 
 }
