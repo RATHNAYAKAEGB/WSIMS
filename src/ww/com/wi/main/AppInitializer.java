@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+
 import java.io.IOException;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
@@ -52,6 +53,9 @@ public class AppInitializer extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
+
+
+
         ctx = new AnnotationConfigApplicationContext();
         ctx.register(AppConfig.class);
         ctx.register(JpaConfig.class);
@@ -62,7 +66,7 @@ public class AppInitializer extends Application {
         Logger.getLogger("").addHandler(fileHandler);
         Logger.getLogger("").addHandler(new ConsoleHandler());
 
-        Parent root = FXMLLoader.load(this.getClass().getResource("/ww/com/wi/view/Customer.fxml"));
+        Parent root = FXMLLoader.load(this.getClass().getResource("/ww/com/wi/view/CustomerGroupsPriceLists.fxml"));
 
         Scene mainScene = new Scene(root);
 

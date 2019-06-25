@@ -20,6 +20,8 @@ import java.util.GregorianCalendar;
 
 public class HomeController {
     @FXML
+    private ImageView img_CustomerGroupPriceList;
+    @FXML
     private ImageView img_SubCommity;
     @FXML
     private ImageView img_CustomerGroup;
@@ -133,5 +135,9 @@ public class HomeController {
         tt.setFromX(-subScene.getWidth());
         tt.setToX(0);
         tt.play();
+    }
+
+    @FXML
+    private void img_CustomerGroupPriceList_OnClicked(MouseEvent mouseEvent) {
     }
 }

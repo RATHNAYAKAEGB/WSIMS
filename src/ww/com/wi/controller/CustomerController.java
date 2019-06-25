@@ -27,7 +27,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.slf4j.Logger;
+
 import ww.com.wi.business.ManageCustomerGroupBo;
 import ww.com.wi.business.ManageCustomersBO;
 import ww.com.wi.business.ManageSubCommityBo;
@@ -99,10 +99,6 @@ public class CustomerController<T> {
     private List<SubCommity> subCommities = new ArrayList<>();
     private String img_url = " ";
     private List<Customer> allCustomers= new ArrayList<>();
-
-     Logger() {
-
-    }
 
 
     public void initialize() {
